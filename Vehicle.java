@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable {
+public abstract class Vehicle implements Movable {
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
@@ -10,7 +10,7 @@ public abstract class Car implements Movable {
     private double ypos; // y-pos of car
     private double direction; // direction of car
 
-    public Car(int nrDoors, Color color, double enginePower, String modelName) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -65,11 +65,11 @@ public abstract class Car implements Movable {
 
     public void gas(double amount) {
         try {if (amount >= 0 && amount <= 1) {
-                incrementSpeed(amount);
-            }
-            else {
-                throw new Exception();
-            }
+            incrementSpeed(amount);
+        }
+        else {
+            throw new Exception();
+        }
         } catch (Exception e) {
             System.out.println("Choose a number between 0 and 1");
         }
@@ -102,3 +102,4 @@ public abstract class Car implements Movable {
     }
 
 }
+
