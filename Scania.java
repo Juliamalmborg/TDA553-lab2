@@ -4,6 +4,7 @@ public class Scania extends Truck{
     private boolean truckRamp;
     private  double rampAngle;
 
+
     public Scania(){
         super(2, Color.blue, 200, "Scania");
         truckRamp = true;
@@ -44,7 +45,7 @@ public class Scania extends Truck{
         }}
 
 
-    @Override //går denna att ta bort nu??
+    /*@Override //går denna att ta bort nu??
     public void gas(double amount) {
         try {if (rampAngle == 0 && amount >= 0 && amount <= 1)  {
             incrementSpeed(amount);
@@ -55,7 +56,7 @@ public class Scania extends Truck{
         } catch (Exception e) {
             System.out.println("Truck cannot move when the ramp is up. Please lower the ramp.");
         }
-    }
+    }*/
 
 
     }
