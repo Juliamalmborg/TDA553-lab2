@@ -8,18 +8,18 @@ public class testVolvo240 {
 
     @Test
     public void testNrDoors(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         assertEquals(4,car.getNrDoors());
     }
 
     @Test
     public void testenginepwr(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         assertEquals(100,car.getEnginePower(),0.0001);
     }
     @Test
     public void setcolor(){
-        Car volvo = new Volvo240();
+        Vehicle volvo = new Volvo240();
         volvo.setColor(Color.CYAN);
         assertEquals(Color.CYAN,volvo.getColor());
     }
@@ -31,7 +31,7 @@ public class testVolvo240 {
 
     @Test
     public void testgas(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         car.startEngine();
         car.gas(1);
         assertEquals(1.35,car.getCurrentSpeed(),0);
@@ -39,7 +39,7 @@ public class testVolvo240 {
 
     @Test
     public void testbrake(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         car.startEngine();
         car.gas(1);
         car.brake(0.5);
@@ -48,7 +48,7 @@ public class testVolvo240 {
 
     @Test
     public void testmove(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         car.startEngine();
         car.move();
         assertEquals(0,car.getXpos(),0.0001);
@@ -57,14 +57,14 @@ public class testVolvo240 {
 
     @Test
     public void testLeft(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         car.turnLeft();
         assertEquals(180,car.getDirection(),0.0001);
     }
 
     @Test
     public void testRight(){
-        Car car = new Volvo240();
+        Vehicle car = new Volvo240();
         car.turnRight();
         assertEquals(0,car.getDirection(),0.0001);
     }

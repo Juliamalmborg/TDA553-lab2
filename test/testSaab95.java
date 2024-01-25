@@ -8,18 +8,18 @@ public class testSaab95 {
 
     @Test
     public void testNrDoors(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         assertEquals(2,car.getNrDoors());
     }
 
     @Test
     public void testenginepwr(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         assertEquals(125,car.getEnginePower(),0.0001);
     }
     @Test
     public void setcolor(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.setColor(Color.CYAN);
         assertEquals(Color.CYAN,car.getColor());
     }
@@ -40,7 +40,7 @@ public class testSaab95 {
 
     @Test
     public void testgas(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.startEngine();
         car.gas(1);
         assertEquals(1.35,car.getCurrentSpeed(),0);
@@ -48,7 +48,7 @@ public class testSaab95 {
 
     @Test
     public void testbrake(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.startEngine();
         car.gas(1);
         car.brake(0.5);
@@ -57,7 +57,7 @@ public class testSaab95 {
 
     @Test
     public void testmove(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.startEngine();
         car.move();
         assertEquals(0,car.getXpos(),0.0001);
@@ -66,14 +66,14 @@ public class testSaab95 {
 
     @Test
     public void testLeft(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.turnLeft();
         assertEquals(180,car.getDirection(),0.0001);
     }
 
     @Test
     public void testRight(){
-        Car car = new Saab95();
+        Vehicle car = new Saab95();
         car.turnRight();
         assertEquals(0,car.getDirection(),0.0001);
     }
