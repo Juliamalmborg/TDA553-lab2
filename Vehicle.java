@@ -56,34 +56,27 @@ public abstract class Vehicle implements Movable {
 
     protected abstract double speedFactor();
 
-    protected void incrementSpeed(double amount){
+    private void incrementSpeed(double amount){
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
     }
-    protected void decrementSpeed(double amount){
+    private void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
     public void gas(double amount) {
-        try {if (amount >= 0 && amount <= 1) {
+        if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
         }
         else {
-            throw new Exception();
-        }
-        } catch (Exception e) {
-            System.out.println("Choose a number between 0 and 1");
+            throw new IllegalArgumentException("The number is not valid. Please choose a value between 0 and 1");
         }
     }
     public void brake(double amount) {
-        try {
-            if (amount >= 0 && amount <= 1) {
-                decrementSpeed(amount);
-            }
-            else {
-                throw new Exception();}
-        } catch (Exception e) {
-            System.out.println("Choose a number between 0 and 1");
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
         }
+        else {
+            throw new IllegalArgumentException("The number is not valid. Please choose a value between 0 and 1");}
     }
 
     @Override
