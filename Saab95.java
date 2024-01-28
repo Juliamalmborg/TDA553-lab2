@@ -8,8 +8,8 @@ public class Saab95 extends Vehicle{
         super(2, Color.red, 125, "Saab95");
 	    turboOn = false;
     }
-    public void setTurboOn(){
-	    turboOn = true;
+    public void setTurboOn() {
+        turboOn = true;
     }
 
     public void setTurboOff(){
