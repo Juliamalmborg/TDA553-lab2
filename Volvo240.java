@@ -12,5 +12,9 @@ public class Volvo240 extends Vehicle {
         return getEnginePower() * 0.01 * trimFactor;
     }
 
+    @Override
+    protected int getSize(){
+        return 1;} //small
+
 
 }

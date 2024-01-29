@@ -9,7 +9,7 @@ public abstract class Vehicle implements Movable {
     private double xpos; // x-pos of car
     private double ypos; // y-pos of car
     private double direction; // direction of car
-    private int size; //size of car
+    private int size;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -45,9 +45,13 @@ public abstract class Vehicle implements Movable {
     protected double getXpos(){return this.xpos;}
     protected double getYpos(){return this.ypos;}
 
+    protected void setXpos(double x) {this.xpos = x;}
+
+    protected void setYpos(double y) {this.ypos = y;}
+
     protected double getDirection(){return this.direction;}
 
-    protected  int getSize(){return this.size;}
+    protected abstract int getSize();
 
     protected void startEngine(){
         this.currentSpeed = 0.1;
