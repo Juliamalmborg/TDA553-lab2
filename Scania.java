@@ -39,21 +39,9 @@ public class Scania extends Truck{
         } catch (Exception e) {
             System.out.println("Minimum angle is allowed to be 0 degrees.");
         }}
-
-
-    /*@Override //går denna att ta bort nu??
-    public void gas(double amount) {
-        try {if (rampAngle == 0 && amount >= 0 && amount <= 1)  {
-            incrementSpeed(amount);
-        }
-        else {
-            throw new Exception();
-        }
-        } catch (Exception e) {
-            System.out.println("Truck cannot move when the ramp is up. Please lower the ramp.");
-        }
-    }*/
-
+    @Override
+    protected int getSize(){
+        return 3;} //large
 
     }
 
