@@ -1,5 +1,4 @@
 import java.awt.*;
-
 public class Scania extends Truck{
     private boolean truckRamp;
     private  double rampAngle;
@@ -10,9 +9,6 @@ public class Scania extends Truck{
         truckRamp = true;
         rampAngle = 0;
     }
-
-    @Override
-    protected double speedFactor(){return getEnginePower() * 0.01;}
 
     protected void incrementAngle(double angle) {
         rampAngle += angle;
@@ -30,7 +26,7 @@ public class Scania extends Truck{
                 throw new Exception();
             }
         } catch (Exception e) {
-            System.out.println("Maximum angle is allowed to be70 degrees.");
+            System.out.println("Maximum angle is allowed to be 70 degrees.");
         }}
 
     public void lowerRamp(double angle) { //köra stopEngine inna try-catch??

@@ -28,4 +28,7 @@ public abstract class Truck extends Vehicle {
         }
     }
 
+    @Override
+    protected double speedFactor(){return getEnginePower() * 0.01;}
+
 }
