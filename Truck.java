@@ -4,8 +4,8 @@ import java.awt.*;
 
 
 public abstract class Truck extends Vehicle {
-    private boolean truckRamp;
-    private  double rampAngle;
+    private boolean truckRamp; // har ramp
+    private  double rampAngle; // måste interageras i CarTransports olika lägen
 
     public Truck(int nrDoors, Color color, double enginePower, String modelName){
         super(nrDoors, color, enginePower, modelName);

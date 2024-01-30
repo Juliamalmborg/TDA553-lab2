@@ -9,12 +9,15 @@ public class CarTransport extends Truck implements Loadable{
     private int maxCapacity; //Biltransporten har ett maximalt antal bilar som den kan lasta.
     private double maxSizeCar; //Bilar som ska lastas på biltransporten får inte vara för stora (eget antagande)
 
+    private int rampAngle; // för att uppdatera rampAngle i Truck??
+
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
         this.rampIsUp = true;
         this.carsOnRamp = new Stack<>();
         this.maxCapacity = 10;
         this.maxSizeCar = 2;
+        this.rampAngle = 70; // 70 anses som uppe och 0 nere
         }
 
     @Override
@@ -33,22 +36,25 @@ public class CarTransport extends Truck implements Loadable{
     }
 
     @Override
-    public void UnloadCar(){
-        if (!rampIsUp) {  //unloadar just nu en och en,
+    public Vehicle UnloadCar(){
+        if (!rampIsUp && !carsOnRamp.isEmpty()) {  //unloadar just nu en och en,
             Vehicle unloadedcar = carsOnRamp.pop();
             unloadedcar.setXpos(this.getXpos()+1); // Vill ha pos när CarTransport,
+            return unloadedcar;
         }
         else {
-            throw new IllegalArgumentException("The car cannot be unloaded. Check position of ramp.");
+            throw new IllegalArgumentException("The car cannot be unloaded. Check position of ramp or if ramp empty.");
         }
     }
 
     public void raiseRamp(){
         rampIsUp = true;
+        rampAngle = 70;
     }
 
     public void lowerRamp(){
         rampIsUp = false;
+        rampAngle = 0;
     }
 
     protected int getnrCarsOnRamp(){

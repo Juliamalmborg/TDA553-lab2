@@ -13,6 +13,7 @@ public class testCarTransport {
         Vehicle car = new Saab95();
         ct.lowerRamp();
         ct.LoadCar(car);
+        ct.raiseRamp();
         assertEquals(ct.getXpos(), car.getXpos(), 0);
         assertEquals(ct.getYpos(), car.getYpos(), 0);
     }

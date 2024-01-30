@@ -11,8 +11,9 @@ public class testScania {
         scania = new Scania();
     }
 
-    @Test
+    @Test // TODO denna funkar ej
     public void testLiftRamp() {
+        scania.stopEngine();
         scania.liftRamp(20);
         assertEquals(20, scania.getAngle(), 0);
     }
