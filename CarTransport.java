@@ -9,16 +9,14 @@ public class CarTransport extends Truck implements Loadable<Vehicle>, TruckPlatf
     private int maxCapacity; //Biltransporten har ett maximalt antal bilar som den kan lasta.
     private double maxSizeCar; //Bilar som ska lastas på biltransporten får inte vara för stora (eget antagande)
 
-    private int rampAngle; // för att uppdatera rampAngle i Truck??
-
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
         this.rampIsUp = true; //körläge
         this.carsOnRamp = new Stack<>();
-        this.maxCapacity = 10;
+        this.maxCapacity = maxCapacity;
         this.maxSizeCar = 2;
-        this.rampAngle = 0; // 70 anses som uppe och 0 nere, 0 är körläge
         }
+
 
     @Override
     public void LoadCar(Vehicle car) {
@@ -47,7 +45,6 @@ public class CarTransport extends Truck implements Loadable<Vehicle>, TruckPlatf
         }
     }
 
-
     protected int getnrCarsOnRamp(){
         return this.carsOnRamp.size();
     }
@@ -63,10 +60,18 @@ public class CarTransport extends Truck implements Loadable<Vehicle>, TruckPlatf
         return 3;} //large
 
     @Override
+    public boolean isRampUp() { // Från interfacet pga används i båda trucks
+        return rampIsUp;
+    }
+    @Override
+    public void setRampState(boolean rampState) { //boolean som talar om om rampen är uppe eller nere
+        this.rampIsUp = rampState;
+    }
+
+    @Override
     public void lowerRamp(double angle) { //behövs göras för att lasta bilar sänker till marken
-        if (getCurrentSpeed() == 0 && rampIsUp) {
-            rampIsUp = false;
-            setAngle(70);}
+        if (getCurrentSpeed() == 0 && rampIsUp) { //bör man skriva detta i interfacet?
+            setRampState(false);}
         else {
             throw new IllegalStateException("Truck cannot lower ramp while moving or ramp is down.");
         }
@@ -75,11 +80,11 @@ public class CarTransport extends Truck implements Loadable<Vehicle>, TruckPlatf
     @Override
     public void raiseRamp(double angle) {
         if (getCurrentSpeed() == 0 && !rampIsUp ) {
-            rampIsUp = true;
-            setAngle(0);}
+            setRampState(true);}
         else {
             throw new IllegalStateException("Truck cannot raise ramp while moving or ramp is up");
         }
     }
+
 }
 
