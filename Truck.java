@@ -31,6 +31,13 @@ public abstract class Truck extends Vehicle {
     @Override
     protected double speedFactor(){return getEnginePower() * 0.01;}
 
-
+    @Override
+    public void gas(double amount){
+        if (amount >= 0 && amount <= 1 && rampAngle == 0) {
+            incrementSpeed(amount);
+        }
+        else {
+            throw new IllegalArgumentException("The number is not valid, or the ramp is down. Please choose a value between 0 and 1");
+        }}
 
 }

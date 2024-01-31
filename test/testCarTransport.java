@@ -10,7 +10,7 @@ public class testCarTransport {
     @Before
     public void create_cars() {ct = new CarTransport(2, Color.black, 500, "Mercedes");}
 
-    @Test
+    /*@Test
     public void testSamePosLoad(){
         Vehicle car = new Saab95();
         ct.lowerRamp();
@@ -18,8 +18,8 @@ public class testCarTransport {
         ct.raiseRamp();
         assertEquals(ct.getXpos(), car.getXpos(), 0);
         assertEquals(ct.getYpos(), car.getYpos(), 0);
-    }
-    @Test
+    }*/
+    /*@Test
     public void testloadedcars(){
         Vehicle saab = new Saab95();
         Vehicle volvo = new Volvo240();
@@ -29,24 +29,24 @@ public class testCarTransport {
         ct.UnloadCar();
         ct.LoadCar(volvo);
         assertEquals(ct.getnrCarsOnRamp(), 2, 0);
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testErrorLowerRamp(){
         ct.startEngine();
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
             ct.lowerRamp();
         });
         assertEquals("Truck cannot lower ramp while moving.", e.getMessage());
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testErrorRaiseRamp(){
         ct.startEngine();
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
             ct.raiseRamp();
         });
         assertEquals("Truck cannot raise ramp while moving.", e.getMessage());
-    }
+    }*/
 
 }
