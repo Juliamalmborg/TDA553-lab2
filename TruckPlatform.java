@@ -1,6 +1,5 @@
 public interface TruckPlatform {
-    void lowerRamp();
-    void raiseRamp();
+    void lowerRamp(double angle);
+    void raiseRamp(double angle);
 
-    void setRamp(double value);
 }

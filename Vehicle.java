@@ -64,7 +64,7 @@ public abstract class Vehicle implements Movable {
 
     protected abstract double speedFactor();
 
-    private void incrementSpeed(double amount){
+    protected void incrementSpeed(double amount){
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
     }
     private void decrementSpeed(double amount){

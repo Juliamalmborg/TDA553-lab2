@@ -3,7 +3,7 @@ import java.util.Stack;
 
 import static java.lang.Math.abs;
 
-public class CarTransport extends Truck implements Loadable<Vehicle>{
+public class CarTransport extends Truck implements Loadable<Vehicle>, TruckPlatform{
     private boolean rampIsUp; //Rampen är antingen uppe eller nere
     private Stack<Vehicle> carsOnRamp; //stack som innehåller antal bilar som finns på rampen.
     private int maxCapacity; //Biltransporten har ett maximalt antal bilar som den kan lasta.
@@ -47,23 +47,6 @@ public class CarTransport extends Truck implements Loadable<Vehicle>{
         }
     }
 
-    public void raiseRamp(){
-        if (getCurrentSpeed() == 0 && !rampIsUp ) {
-            rampIsUp = true;
-            setAngle(0);}
-        else {
-            throw new IllegalStateException("Truck cannot raise ramp while moving or ramp is up");
-        }
-    }
-
-    public void lowerRamp(){ //behövs göras för att lasta bilar sänker till marken
-        if (getCurrentSpeed() == 0 && rampIsUp) {
-            rampIsUp = false;
-            setAngle(70);}
-        else {
-            throw new IllegalStateException("Truck cannot lower ramp while moving or ramp is down.");
-        }
-    }
 
     protected int getnrCarsOnRamp(){
         return this.carsOnRamp.size();
@@ -78,5 +61,25 @@ public class CarTransport extends Truck implements Loadable<Vehicle>{
     @Override
     protected int getSize(){
         return 3;} //large
+
+    @Override
+    public void lowerRamp(double angle) { //behövs göras för att lasta bilar sänker till marken
+        if (getCurrentSpeed() == 0 && rampIsUp) {
+            rampIsUp = false;
+            setAngle(70);}
+        else {
+            throw new IllegalStateException("Truck cannot lower ramp while moving or ramp is down.");
+        }
     }
+
+    @Override
+    public void raiseRamp(double angle) {
+        if (getCurrentSpeed() == 0 && !rampIsUp ) {
+            rampIsUp = true;
+            setAngle(0);}
+        else {
+            throw new IllegalStateException("Truck cannot raise ramp while moving or ramp is up");
+        }
+    }
+}
 
