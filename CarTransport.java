@@ -3,7 +3,7 @@ import java.util.Stack;
 
 import static java.lang.Math.abs;
 
-public class CarTransport extends Truck implements Loadable{
+public class CarTransport extends Truck implements Loadable<Vehicle>{
     private boolean rampIsUp; //Rampen är antingen uppe eller nere
     private Stack<Vehicle> carsOnRamp; //stack som innehåller antal bilar som finns på rampen.
     private int maxCapacity; //Biltransporten har ett maximalt antal bilar som den kan lasta.
@@ -13,11 +13,11 @@ public class CarTransport extends Truck implements Loadable{
 
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
-        this.rampIsUp = true;
+        this.rampIsUp = true; //körläge
         this.carsOnRamp = new Stack<>();
         this.maxCapacity = 10;
         this.maxSizeCar = 2;
-        this.rampAngle = 70; // 70 anses som uppe och 0 nere
+        this.rampAngle = 0; // 70 anses som uppe och 0 nere, 0 är körläge
         }
 
     @Override
@@ -48,13 +48,21 @@ public class CarTransport extends Truck implements Loadable{
     }
 
     public void raiseRamp(){
-        rampIsUp = true;
-        rampAngle = 70;
+        if (getCurrentSpeed() == 0 && !rampIsUp ) {
+            rampIsUp = true;
+            setAngle(0);}
+        else {
+            throw new IllegalStateException("Truck cannot raise ramp while moving or ramp is up");
+        }
     }
 
-    public void lowerRamp(){
-        rampIsUp = false;
-        rampAngle = 0;
+    public void lowerRamp(){ //behövs göras för att lasta bilar sänker till marken
+        if (getCurrentSpeed() == 0 && rampIsUp) {
+            rampIsUp = false;
+            setAngle(70);}
+        else {
+            throw new IllegalStateException("Truck cannot lower ramp while moving or ramp is down.");
+        }
     }
 
     protected int getnrCarsOnRamp(){
