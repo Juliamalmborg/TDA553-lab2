@@ -1,6 +1,8 @@
 import org.junit.Test;
 import java.awt.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import org.junit.Before;
 public class testCarTransport {
     private CarTransport ct;
@@ -28,4 +30,23 @@ public class testCarTransport {
         ct.LoadCar(volvo);
         assertEquals(ct.getnrCarsOnRamp(), 2, 0);
     }
+
+    @Test
+    public void testErrorLowerRamp(){
+        ct.startEngine();
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
+            ct.lowerRamp();
+        });
+        assertEquals("Truck cannot lower ramp while moving.", e.getMessage());
+    }
+
+    @Test
+    public void testErrorRaiseRamp(){
+        ct.startEngine();
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
+            ct.raiseRamp();
+        });
+        assertEquals("Truck cannot raise ramp while moving.", e.getMessage());
+    }
+
 }

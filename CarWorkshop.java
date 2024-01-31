@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class CarWorkshop<T extends Vehicle> implements Loadable <T>{ // T - generic type parameter.
     // Indikerar på att det endast kan ta emot objekt av en viss typ.
-    // kan sedan använda T i metoderna nedan för CarWorkshop
-    //
     private ArrayList<T> carsInWorkshop;
     private int maxCapacity;
 
@@ -13,9 +11,9 @@ public class CarWorkshop<T extends Vehicle> implements Loadable <T>{ // T - gene
     }
 
     @Override
-    public void LoadCar(Vehicle car) {
+    public void LoadCar(T car) {
         if (carsInWorkshop.size() < maxCapacity)
-            carsInWorkshop.add((T) car);
+            carsInWorkshop.add(car);
         else {
                 throw new IllegalArgumentException("Cannot load another car to Workshop.");
             }

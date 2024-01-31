@@ -10,10 +10,10 @@ public abstract class Truck extends Vehicle {
     public Truck(int nrDoors, Color color, double enginePower, String modelName){
         super(nrDoors, color, enginePower, modelName);
         this.truckRamp = true;
-        this.rampAngle = 0;
+        this.rampAngle = 0; //flaket upp på lastbilen, körläge!!
     }
 
-    protected double getAngle(){ // ska vara private, protected i class truck
+    public double getAngle(){ // ska vara private, protected i class truck
         return rampAngle;
     }
 

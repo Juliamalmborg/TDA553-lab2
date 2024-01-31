@@ -1,24 +1,21 @@
 import java.awt.*;
 public class Scania extends Truck{
-    private boolean truckRamp;
-    private  double rampAngle;
-
+    private boolean truckRamp; //har en ramp
 
     public Scania(){
         super(2, Color.blue, 200, "Scania");
-        truckRamp = true;
-        rampAngle = 0;
+        this.truckRamp = true;
     }
 
-    protected void incrementAngle(double angle) {
-        rampAngle += angle;
+    private void incrementAngle(double angle) {
+        setAngle(getAngle() + angle);
     }
 
-    protected void decrementAngle(double angle) {
-        rampAngle -= angle;
+    private void decrementAngle(double angle) {
+        setAngle(getAngle() - angle);
     }
 
-    public void liftRamp(double angle) {
+    public void lowerRamp(double angle) { // sänka flaket för att kunna lasta på
         if (getCurrentSpeed() == 0 && angle + getAngle() < 70 && angle >= 0) {
             incrementAngle(angle);
         } else {
@@ -26,16 +23,13 @@ public class Scania extends Truck{
         }
         }
 
-    public void lowerRamp(double angle) { //köra stopEngine inna try-catch??
-        try {
-            if (getCurrentSpeed() == 0 && getAngle() - angle >= 0 && angle >= 0) {
-                decrementAngle(angle);
-            } else {
-                throw new Exception(); // TODO Fixa till ovan!!
-            }
-        } catch (Exception e) {
-            System.out.println("Can not have a speed and/or minimum angle is allowed to be 0 degrees.");
-        }}
+    public void liftRamp(double angle) { // innebär att lyfta flaket från marken för att sedan kunna köra
+        if (getCurrentSpeed() == 0 && getAngle() - angle >= 0 && angle >= 0) {
+            decrementAngle(angle);
+        } else {
+            throw new IllegalArgumentException("Can not have a speed and/or minimum angle is allowed to be 0 degrees.");
+        }
+    }
     @Override
     protected int getSize(){
         return 3;} //large
