@@ -1,5 +1,5 @@
 public interface TruckPlatform {
-    void lowerRamp(double angle);
-    void raiseRamp(double angle);
-
+    void lowerRamp();
+    void raiseRamp();
+    public boolean getIsRampOn();
 }

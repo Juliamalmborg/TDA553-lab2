@@ -25,10 +25,10 @@ public class testCarWorkshop {
     public void testloadmaxworkshop(){
         Saab95 saab = new Saab95();
         Volvo240 volvo = new Volvo240();
-        cw.LoadCar(saab);
-        cw.LoadCar(volvo);
+        cw.loadCar(saab);
+        cw.loadCar(volvo);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-            cw.LoadCar(volvo);
+            cw.loadCar(volvo);
         });
         assertEquals("Cannot load another car to Workshop.",e.getMessage());
     }

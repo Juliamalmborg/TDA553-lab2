@@ -1,30 +1,28 @@
 import java.util.ArrayList;
 
-public class CarWorkshop<T extends Vehicle> implements Loadable <T>{ // T - generic type parameter.
+public class CarWorkshop<T extends Vehicle> { // T - generic type parameter.
     // Indikerar på att det endast kan ta emot objekt av en viss typ.
-    private ArrayList<T> carsInWorkshop;
-    private int maxCapacity;
+    private VehicleStorage<T> storageInWorkshop;
+    //eventuellt ska verkstad ha en position
 
     public CarWorkshop(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
-        this.carsInWorkshop = new ArrayList<>();
+        this.storageInWorkshop = new VehicleStorage<>(5);
     }
 
-    @Override
-    public void LoadCar(T car) {
-        if (carsInWorkshop.size() < maxCapacity)
-            carsInWorkshop.add(car);
+    public void loadCar(T car) {
+        if (storageInWorkshop.getNrCars() < storageInWorkshop.getMaxCapacity()) {
+            storageInWorkshop.loadCar(car);
+        }
         else {
                 throw new IllegalArgumentException("Cannot load another car to Workshop.");
             }
         }
 
-    @Override
-    public T UnloadCar() {
-        if (carsInWorkshop.isEmpty()){
-            throw new IllegalStateException("The Workshop is empty.");}
+    public T unloadCar() {
+        if (storageInWorkshop.getNrCars() == 0){
+            throw new IllegalStateException("The Workshop is empty, no cars to ");}
         else {
-            return carsInWorkshop.removeFirst();
+            return storageInWorkshop.unloadCar();
         }
     }
 
