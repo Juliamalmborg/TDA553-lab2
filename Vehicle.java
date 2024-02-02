@@ -10,6 +10,7 @@ public abstract class Vehicle implements Movable {
     private double ypos; // y-pos of car
     private double direction; // direction of car
     private int size;
+    private boolean movable;
 
     public Vehicle(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -20,6 +21,7 @@ public abstract class Vehicle implements Movable {
         this.ypos = 1;
         this.direction = 90;
         this.size = size;
+        this.movable = true;
         stopEngine();
 
     }
@@ -53,6 +55,14 @@ public abstract class Vehicle implements Movable {
 
     protected abstract int getSize();
 
+    public boolean isMovable() {
+        return movable;
+    }
+
+    public void setMovable(boolean movable) {
+        this.movable = movable;
+    }
+
     protected void startEngine(){
         this.currentSpeed = 0.1;
     }
@@ -60,7 +70,6 @@ public abstract class Vehicle implements Movable {
     protected void stopEngine(){
         this.currentSpeed = 0;
     }
-
 
     protected abstract double speedFactor();
 

@@ -1,6 +1,6 @@
 public interface Loadable<T extends Vehicle>  {
 
-    void LoadCar(T car);
+    void loadCar(T car);
 
-    T UnloadCar();
+    T unloadCar();
 }
