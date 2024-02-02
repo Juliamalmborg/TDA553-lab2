@@ -14,6 +14,7 @@ public class CarTransport extends Truck {
     }
 
     public void loadCar(Vehicle car) {
+
         if (car instanceof CarTransport) {
             throw new IllegalArgumentException("Cannot load another CarTransport.");
         }
@@ -45,6 +46,7 @@ public class CarTransport extends Truck {
     @Override
     protected int getSize(){
         return 3;} //large
+    }
 
 }
 
