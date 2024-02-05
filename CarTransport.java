@@ -3,14 +3,14 @@ import static java.lang.Math.abs;
 
 public class CarTransport extends Truck {
 
-    private VehicleStorage<Vehicle> storageCapacity;
-    private RampWithStates ramp;
+    private final VehicleStorage<Vehicle> storageCapacity; //final pga inte ändras??
+    private final RampWithStates ramp; //final pga inte ändras
     private int rampState;
 
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
         this.ramp = new RampWithStates();
-        this.storageCapacity = new VehicleStorage<Vehicle> (2);
+        storageCapacity = new VehicleStorage<Vehicle> (2);
     }
 
     public void loadCar(Vehicle car) {
@@ -48,5 +48,5 @@ public class CarTransport extends Truck {
         return 3;} //large
     }
 
-}
+
 

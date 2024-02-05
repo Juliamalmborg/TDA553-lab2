@@ -36,10 +36,10 @@ public class RampWithAngle implements TruckPlatform {
 
     @Override
     public void lowerRamp() {
-        lowerRamp1(0);
+        lowerRamp(0);
     }
 
-    public void lowerRamp1(double angle) { // sänka flaket för att kunna lasta på
+    public void lowerRamp(double angle) { // sänka flaket för att kunna lasta på
         if (checkAngle(angle)) {
             incrementAngle(angle);
         } else {

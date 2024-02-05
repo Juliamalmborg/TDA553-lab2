@@ -11,10 +11,11 @@ public class testScania {
         scania = new Scania();
     }
 
+
     @Test // TODO denna funkar ej
     public void testLowerRamp() {
         scania.stopEngine();
-        scania.lowerRamp(20);
-        assertEquals(20, scania.getAngle(), 0);
+        scania.setRampAngle(20);
+        assertEquals(20, scania.getRampAngle(), 0);
     }
 }
