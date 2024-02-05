@@ -4,17 +4,22 @@ import java.util.ArrayList;
 public class VehicleStorage<T extends Vehicle> implements Loadable<T> {
     private ArrayList <T> loadedVehicles;
     private int maxCapacity;
+    private double xpos; //xpos of vehicleStorage
+    private double ypos; //ypos of vehilceStorage
 
     public VehicleStorage(int maxCapacity) {
         loadedVehicles = new ArrayList<>(maxCapacity);
+        this.maxCapacity = maxCapacity;
+        this.xpos = xpos;
+        this.ypos = ypos;
     }
 
     @Override
     public void loadCar(T car) {
         if (inProximity(car)){
             loadedVehicles.addLast(car);
-            car.setXpos(x);
-            car.setYpos(y);
+            car.setXpos(this.xpos);
+            car.setYpos(this.ypos);
         }
     }
     @Override
@@ -38,6 +43,9 @@ public class VehicleStorage<T extends Vehicle> implements Loadable<T> {
         return this.maxCapacity;
     }
 
-
+    public double getXpos() { return xpos; }
+    public void setXpos(double xpos) { this.xpos = xpos; }
+    public double getYpos() { return ypos; }
+    public void setYpos(double ypos) { this.ypos = ypos; }
 }
 

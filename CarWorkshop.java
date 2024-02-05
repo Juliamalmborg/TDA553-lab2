@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class CarWorkshop<T extends Vehicle> { // T - generic type parameter.
     // Indikerar på att det endast kan ta emot objekt av en viss typ.
-    private VehicleStorage<T> storageInWorkshop;
+    private final VehicleStorage<T> storageInWorkshop; // final pga aldrig ändras?
     //eventuellt ska verkstad ha en position
 
     public CarWorkshop(int maxCapacity) {
-        this.storageInWorkshop = new VehicleStorage<>(5);
+        storageInWorkshop = new VehicleStorage<>(5);
     }
 
     public void loadCar(T car) {

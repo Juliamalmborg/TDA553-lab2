@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Scania extends Truck {
-    private final static int maxAngle = 70;
+    private static int maxAngle = 70;
     private RampWithAngle ramp;
 
     public Scania(){
@@ -21,8 +21,10 @@ public class Scania extends Truck {
         return maxAngle;
     }
 
+    public void setRampAngle(int maxAngle) {ramp.setRamp(maxAngle);}
+
     @Override
     protected int getSize(){
         return 3;} //large
     }
-}
+
