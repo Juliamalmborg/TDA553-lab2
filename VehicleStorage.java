@@ -33,7 +33,7 @@ public class VehicleStorage<T extends Vehicle> implements Loadable<T> {
             return ((Stack<T>) loadedVehicles).pop();
         }
         else {
-            return loadedVehicles.removeLast();
+            return loadedVehicles.removeFirst();
     }}
 
     public List<T> getLoadedVehicles() {
