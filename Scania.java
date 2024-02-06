@@ -13,18 +13,27 @@ public class Scania extends Truck {
         return ramp.getIsRampOn();
     }
 
-    public int getRampAngle() {
+    public double getRampAngle() {
         return ramp.getRampAngle();
     }
 
-    public static int getMaxAngle() {
-        return maxAngle;
+    public void raiseRamp(double angle) {
+        if (getCurrentSpeed() == 0){
+            ramp.raiseRamp(angle);}
+        else
+            throw new IllegalArgumentException("cannot raise ramp while moving");
     }
 
-    public void setRampAngle(int maxAngle) {ramp.setRamp(maxAngle);}
+    public void lowerRamp(double angle) {
+        if (getCurrentSpeed() == 0){
+        ramp.lowerRamp(angle);}
+        else
+            throw new IllegalArgumentException("cannot lower ramp while moving");
+    }
 
-    @Override
-    protected int getSize(){
-        return 3;} //large
+    public double getMaxAngle(){
+        return ramp.getMaxAngle();
+    }
+
     }
 

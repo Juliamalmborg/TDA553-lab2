@@ -12,10 +12,20 @@ public class testScania {
     }
 
 
-    @Test // TODO denna funkar ej
+    @Test
     public void testLowerRamp() {
         scania.stopEngine();
-        scania.setRampAngle(20);
+        scania.lowerRamp(20);
         assertEquals(20, scania.getRampAngle(), 0);
     }
+
+    @Test
+    public void testRaiseRamp() {
+        scania.stopEngine();
+        scania.lowerRamp(20);
+        scania.raiseRamp(10);
+        assertEquals(10, scania.getRampAngle(), 0);
+    }
+
+
 }

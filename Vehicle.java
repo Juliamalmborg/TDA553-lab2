@@ -53,8 +53,6 @@ public abstract class Vehicle implements Movable {
 
     protected double getDirection(){return this.direction;}
 
-    protected abstract int getSize();
-
     public boolean isMovable() {
         return movable;
     }

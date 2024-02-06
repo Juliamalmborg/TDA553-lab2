@@ -8,45 +8,45 @@ public class testCarTransport {
     private CarTransport ct;
 
     @Before
-    public void create_cars() {ct = new CarTransport(2, Color.black, 500, "Mercedes");}
+    public void create_cartransport() {ct = new CarTransport(2, Color.black, 500, "Mercedes");}
 
-    /*@Test
+    @Test
     public void testSamePosLoad(){
         Vehicle car = new Saab95();
+        car.setXpos(ct.getXpos());
+        car.setYpos(ct.getYpos());
         ct.lowerRamp();
-        ct.LoadCar(car);
+        ct.loadCar(car);
         ct.raiseRamp();
         assertEquals(ct.getXpos(), car.getXpos(), 0);
         assertEquals(ct.getYpos(), car.getYpos(), 0);
-    }*/
-    /*@Test
+    }
+    @Test
     public void testloadedcars(){
-        Vehicle saab = new Saab95();
         Vehicle volvo = new Volvo240();
         ct.lowerRamp();
-        ct.LoadCar(saab);
-        ct.LoadCar(saab);
-        ct.UnloadCar();
-        ct.LoadCar(volvo);
-        assertEquals(ct.getnrCarsOnRamp(), 2, 0);
-    }*/
+        ct.loadCar(volvo);
+        ct.loadCar(volvo);
+        ct.unloadCar(volvo);
+        assertEquals(1,ct.getnrCarsOnRamp(), 0);
+    }
 
-    /*@Test
+    @Test
     public void testErrorLowerRamp(){
         ct.startEngine();
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.lowerRamp();
         });
         assertEquals("Truck cannot lower ramp while moving.", e.getMessage());
-    }*/
+    }
 
-    /*@Test
+    @Test
     public void testErrorRaiseRamp(){
         ct.startEngine();
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.raiseRamp();
         });
         assertEquals("Truck cannot raise ramp while moving.", e.getMessage());
-    }*/
+    }
 
 }
