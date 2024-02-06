@@ -5,15 +5,13 @@ import static java.lang.Math.abs;
 
 public class CarTransport extends Truck {
 
-    private final VehicleStorage<Vehicle> storage; //final pga inte ändras??
-    private final RampWithStates ramp; //final pga inte ändras
-    private int rampState;
+    private final LifoStorage<Vehicle> storage;
 
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
-        this.ramp = new RampWithStates();
-        storage = new VehicleStorage<Vehicle> (4, new Stack<Vehicle>());
+        storage = new LifoStorage<Vehicle> (4);
     }
+
 
     public void loadCar(Vehicle car) {
         if (car instanceof Truck) { //Truck innefattar CarTransport och scania
@@ -47,30 +45,11 @@ public class CarTransport extends Truck {
         return storage.getNrCars();
     }
 
-    @Override
-    protected double speedFactor(){return getEnginePower() * 0.01;}
-
 
     public boolean inProximity(Vehicle car) {
         return Math.abs(this.getXpos() - car.getXpos()) < 2 && Math.abs(this.getYpos() - car.getYpos()) < 2;
     }
 
-    public void lowerRamp(){
-        if (getCurrentSpeed() == 0){
-        ramp.lowerRamp();}
-        else
-        {
-            throw new IllegalArgumentException("Truck cannot lower ramp while moving.");
-        }
-    }
-
-    public void raiseRamp(){
-        if (getCurrentSpeed() == 0){
-        ramp.raiseRamp();}
-        else {
-            throw new IllegalArgumentException("Truck cannot raise ramp while moving.");
-        }
-    }
     }
 
 

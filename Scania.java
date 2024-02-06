@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Scania extends Truck {
-    private static int maxAngle = 70;
+    private final double maxAngle = 70;
     private RampWithAngle ramp;
 
     public Scania(){
@@ -9,26 +9,29 @@ public class Scania extends Truck {
         this.ramp = new RampWithAngle(maxAngle);
     }
 
-    public boolean getIsRampOn() {
-        return ramp.getIsRampOn();
-    }
-
-    public double getRampAngle() {
-        return ramp.getRampAngle();
-    }
-
     public void raiseRamp(double angle) {
         if (getCurrentSpeed() == 0){
-            ramp.raiseRamp(angle);}
+            ramp.raiseRamp(angle);
+        }
         else
             throw new IllegalArgumentException("cannot raise ramp while moving");
     }
 
     public void lowerRamp(double angle) {
         if (getCurrentSpeed() == 0){
-        ramp.lowerRamp(angle);}
+            ramp.lowerRamp(angle);
+        }
         else
             throw new IllegalArgumentException("cannot lower ramp while moving");
+    }
+
+
+    public boolean getIsRampOn() {
+        return ramp.getIsRampOn();
+    }
+
+    public double getRampAngle() {
+        return ramp.getRampAngle();
     }
 
     public double getMaxAngle(){
