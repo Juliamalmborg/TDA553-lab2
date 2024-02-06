@@ -23,8 +23,4 @@ public class Saab95 extends Vehicle{
         return getEnginePower() * 0.01 * turbo;
     }
 
-    @Override
-    protected int getSize(){
-        return 1;} //small
-
 }

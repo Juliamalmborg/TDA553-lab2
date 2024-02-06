@@ -1,31 +1,38 @@
 import java.awt.*;
+import java.util.Stack;
+
 import static java.lang.Math.abs;
 
 public class CarTransport extends Truck {
 
-    private final VehicleStorage<Vehicle> storageCapacity; //final pga inte ändras??
+    private final VehicleStorage<Vehicle> storage; //final pga inte ändras??
     private final RampWithStates ramp; //final pga inte ändras
     private int rampState;
 
     public CarTransport(int nrDoors, Color color, double enginePower, String modelName) {
         super(nrDoors, color, enginePower, modelName);
         this.ramp = new RampWithStates();
-        storageCapacity = new VehicleStorage<Vehicle> (2);
+        storage = new VehicleStorage<Vehicle> (4, new Stack<Vehicle>());
     }
 
     public void loadCar(Vehicle car) {
-
-        if (car instanceof CarTransport) {
-            throw new IllegalArgumentException("Cannot load another CarTransport.");
+        if (car instanceof Truck) { //Truck innefattar CarTransport och scania
+            throw new IllegalArgumentException("Cannot load another Truck.");
         }
-        if (getIsRampOn()) {
-            storageCapacity.loadCar(car);
+        else if (!inProximity(car)) {
+            throw new IllegalArgumentException("Car is to far away, can not be loaded.");
+        }
+        else if (getIsRampOn()) {
+            storage.loadCar(car);
+            car.setXpos(this.getXpos());
+            car.setYpos(this.getYpos());
         }
     }
 
-    public Vehicle unloadCar() {
+    public Vehicle unloadCar(Vehicle car) {
         if (getIsRampOn()) {
-             Vehicle unloadedCar = storageCapacity.unloadCar();
+             Vehicle unloadedCar = storage.unloadCar(car);
+             car.setXpos(this.getXpos()+1);
              return unloadedCar;
         } else {
             throw new IllegalStateException("No cars to unload or the ramp is not down.");
@@ -37,15 +44,33 @@ public class CarTransport extends Truck {
     }
 
     protected int getnrCarsOnRamp(){
-        return storageCapacity.getNrCars();
+        return storage.getNrCars();
     }
 
     @Override
     protected double speedFactor(){return getEnginePower() * 0.01;}
 
-    @Override
-    protected int getSize(){
-        return 3;} //large
+
+    public boolean inProximity(Vehicle car) {
+        return Math.abs(this.getXpos() - car.getXpos()) < 2 && Math.abs(this.getYpos() - car.getYpos()) < 2;
+    }
+
+    public void lowerRamp(){
+        if (getCurrentSpeed()==0){
+        ramp.lowerRamp();}
+        else
+        {
+            throw new IllegalArgumentException("Truck cannot lower ramp while moving.");
+        }
+    }
+
+    public void raiseRamp(){
+        if (getCurrentSpeed() == 0){
+        ramp.raiseRamp();}
+        else {
+            throw new IllegalArgumentException("Truck cannot raise ramp while moving.");
+        }
+    }
     }
 
 
