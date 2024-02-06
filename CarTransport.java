@@ -32,7 +32,7 @@ public class CarTransport extends Truck {
     public Vehicle unloadCar(Vehicle car) {
         if (getIsRampOn()) {
              Vehicle unloadedCar = storage.unloadCar(car);
-             car.setXpos(this.getXpos()+1);
+             car.setXpos(this.getXpos()-1);
              return unloadedCar;
         } else {
             throw new IllegalStateException("No cars to unload or the ramp is not down.");
@@ -56,7 +56,7 @@ public class CarTransport extends Truck {
     }
 
     public void lowerRamp(){
-        if (getCurrentSpeed()==0){
+        if (getCurrentSpeed() == 0){
         ramp.lowerRamp();}
         else
         {

@@ -33,7 +33,7 @@ public class RampWithAngle implements TruckPlatform {
         if (checkAngle(angle) && rampAngle + angle <= 70) {
             incrementAngle(angle);
         } else {
-            throw new IllegalArgumentException("Can not have a speed and/or maximum angle is allowed to be 70 degrees.");
+            throw new IllegalArgumentException("Maximum angle is allowed to be 70 degrees.");
         }
     }
 
@@ -45,7 +45,7 @@ public class RampWithAngle implements TruckPlatform {
         if (checkAngle(angle) && rampAngle - angle >= 0) {
             decrementAngle(angle);
         } else {
-            throw new IllegalArgumentException("Can not have a speed and/or minimum angle is allowed to be 0 degrees.");
+            throw new IllegalArgumentException("Minimum angle is allowed to be 0 degrees.");
         }
     }
 
