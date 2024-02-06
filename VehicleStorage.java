@@ -7,34 +7,23 @@ public class VehicleStorage<T extends Vehicle> implements Loadable<T> {
     private List <T> loadedVehicles;
     private int maxCapacity;
 
-    public VehicleStorage(int maxCapacity, List<T> loadedVehicles) {
+    public VehicleStorage(int maxCapacity) {
         this.maxCapacity = maxCapacity;
         this.loadedVehicles = loadedVehicles;
     }
 
     @Override
-    public void loadCar(T car) {
+    public void loadCar(T car) {  // gör två subklasser FIFOstorage, LIFOstorage av vehiclestorage DETTA ÄR ETT PROBLEM!
         if (getNrCars() >= maxCapacity) {
             throw new IllegalArgumentException("The storage is full");
         }
-        else if (loadedVehicles instanceof Stack) {
-            ((Stack<T>) loadedVehicles).push(car);
-        }
-        else {
-            loadedVehicles.addLast(car);
     }
-}
     @Override
     public T unloadCar(T car) {
         if (getNrCars() == 0) {
-            throw new IllegalArgumentException("The storage is empty");
-        }
-        else if (loadedVehicles instanceof Stack<T>) {
-            return ((Stack<T>) loadedVehicles).pop();
-        }
-        else {
-            return loadedVehicles.removeFirst();
-    }}
+            throw new IllegalArgumentException("The storage is empty");}
+        return car;
+    }
 
     public List<T> getLoadedVehicles() {
         return loadedVehicles;}

@@ -9,21 +9,6 @@ public class RampWithAngle implements TruckPlatform {
         this.isRampOn = false;
     }
 
-    private boolean checkAngle(double angle){
-        if(!angleIntervall(angle)) throw new IllegalStateException("You can not set the ramp to this angle");
-        else if(checkRampIsUp(angle)) throw new IllegalStateException("The ramp is already Up");
-        else if(checkRampIsDown(angle)) throw new IllegalStateException("The platform is already Down");
-        else {return true;}
-    }
-
-    private void incrementAngle(double angle) {
-        this.rampAngle += angle;
-    }
-
-    private void decrementAngle(double angle) {
-        this.rampAngle -= angle;
-    }
-
     @Override
     public void lowerRamp() {
         lowerRamp(70);
@@ -49,6 +34,15 @@ public class RampWithAngle implements TruckPlatform {
         }
     }
 
+    private void incrementAngle(double angle) {
+        this.rampAngle += angle;
+    }
+
+    private void decrementAngle(double angle) {
+        this.rampAngle -= angle;
+    }
+
+
     private boolean checkRampIsDown(double angle){
         return angle == maxAngle;
     }
@@ -71,6 +65,13 @@ public class RampWithAngle implements TruckPlatform {
 
     public double getMaxAngle() {
         return maxAngle;
+    }
+
+    private boolean checkAngle(double angle){
+        if(!angleIntervall(angle)) throw new IllegalStateException("You can not set the ramp to this angle");
+        else if(checkRampIsUp(angle)) throw new IllegalStateException("The ramp is already Up");
+        else if(checkRampIsDown(angle)) throw new IllegalStateException("The platform is already Down");
+        else {return true;}
     }
 
 }
