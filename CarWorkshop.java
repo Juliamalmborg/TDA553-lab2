@@ -3,17 +3,17 @@ import java.util.List;
 
 public class CarWorkshop<T extends Vehicle> { // T - generic type parameter.
     // Indikerar på att det endast kan ta emot objekt av en viss typ.
-    private final VehicleStorage<T> storageInWorkshop; // final pga aldrig ändras?
+    private final FifoStorage<T> storageInWorkshop;
 
 
-    public CarWorkshop(int maxCapacity) { // vill skicka in i testerna
-        storageInWorkshop = new VehicleStorage<T>(maxCapacity, new ArrayList<T>());
+    public CarWorkshop(int maxCapacity) {
+        storageInWorkshop = new FifoStorage<>(maxCapacity);
     }
 
     public void loadCar(T car) {
             storageInWorkshop.loadCar(car);
         }
-    public T unloadCar(T car) {
+    public Vehicle unloadCar(Vehicle car) {
             return storageInWorkshop.unloadCar(car);
     }
 

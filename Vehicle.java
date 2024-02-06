@@ -20,7 +20,6 @@ public abstract class Vehicle implements Movable {
         this.xpos = 0;
         this.ypos = 1;
         this.direction = 90;
-        this.size = size;
         this.movable = true;
         stopEngine();
 

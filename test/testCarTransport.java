@@ -1,14 +1,29 @@
 import org.junit.Test;
 import java.awt.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import org.junit.Before;
+
+import static org.junit.Assert.*;
+
 public class testCarTransport {
     private CarTransport ct;
 
     @Before
     public void create_cartransport() {ct = new CarTransport(2, Color.black, 500, "Mercedes");}
+
+    @Test
+    public void testlowerRamp() {
+        ct.lowerRamp();
+        assertTrue(ct.getIsRampOn());
+    }
+
+    @Test
+    public void testraiseRamp() {
+        ct.lowerRamp();
+        ct.raiseRamp();
+        assertFalse(ct.getIsRampOn());
+    }
+
 
     @Test
     public void testSamePosLoad(){
@@ -37,7 +52,7 @@ public class testCarTransport {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.lowerRamp();
         });
-        assertEquals("Truck cannot lower ramp while moving.", e.getMessage());
+        assertEquals("cannot lower ramp while moving.", e.getMessage());
     }
 
     @Test
@@ -46,7 +61,7 @@ public class testCarTransport {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.raiseRamp();
         });
-        assertEquals("Truck cannot raise ramp while moving.", e.getMessage());
+        assertEquals("cannot raise ramp while moving.", e.getMessage());
     }
 
 }

@@ -2,8 +2,26 @@ import java.awt.*;
 
 // ska vara superklass till scania och carTransport
 public abstract class Truck extends Vehicle {
+    protected final TruckPlatform ramp;
     public Truck(int nrDoors, Color color, double enginePower, String modelName){
         super(nrDoors, color, enginePower, modelName);
+        this.ramp = new RampWithStates();
+    }
+
+    public void lowerRamp(){
+        if (getCurrentSpeed() == 0){
+            ramp.lowerRamp();
+        }
+        else
+            throw new IllegalArgumentException("cannot lower ramp while moving");
+    }
+
+    public void raiseRamp(){
+        if (getCurrentSpeed() == 0){
+            ramp.raiseRamp();
+        }
+        else
+            throw new IllegalArgumentException("cannot raise ramp while moving");
     }
 
     @Override //för att kunna köra bilen efter lastning

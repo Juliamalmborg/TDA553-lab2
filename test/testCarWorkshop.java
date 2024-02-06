@@ -15,11 +15,10 @@ public class testCarWorkshop {
     @Test
     public void testloadmaxworkshop(){
         Saab95 saab = new Saab95();
-        Volvo240 volvo = new Volvo240();
         cw.loadCar(saab);
-        cw.loadCar(volvo);
+        cw.loadCar(saab);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-            cw.loadCar(volvo);
+            cw.loadCar(saab);
         });
         assertEquals("The storage is full",e.getMessage());
     }
