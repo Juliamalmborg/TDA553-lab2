@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//går merge?
 public class FifoStorage<T extends Vehicle> extends VehicleStorage { //ej stack add remocce
     private ArrayList<Vehicle> loadedVehicles;
 
