@@ -35,7 +35,7 @@ public class testScania {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             scania.lowerRamp(20);
         });
-        assertEquals("cannot lower ramp while moving.", e.getMessage());
+        assertEquals("cannot lower ramp while moving", e.getMessage());
     }
 
 

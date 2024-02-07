@@ -3,7 +3,7 @@ import java.util.Stack;
 
 import static java.lang.Math.abs;
 
-public class CarTransport extends Truck {
+public class CarTransport extends Truck implements Loadable<Vehicle>{
 
     private final LifoStorage<Vehicle> storage;
 
@@ -12,8 +12,8 @@ public class CarTransport extends Truck {
         storage = new LifoStorage<Vehicle> (4);
     }
 
-
-    public void loadCar(Vehicle car) {
+    @Override
+    public void load(Vehicle car) {
         if (car instanceof Truck) { //Truck innefattar CarTransport och scania
             throw new IllegalArgumentException("Cannot load another Truck.");
         }
@@ -21,16 +21,16 @@ public class CarTransport extends Truck {
             throw new IllegalArgumentException("Car is to far away, can not be loaded.");
         }
         else if (getIsRampOn()) {
-            storage.loadCar(car);
+            storage.load(car);
             car.setXpos(this.getXpos());
             car.setYpos(this.getYpos());
         }
     }
-
-    public Vehicle unloadCar(Vehicle car) {
+    @Override
+    public Vehicle unload() {
         if (getIsRampOn()) {
-             Vehicle unloadedCar = storage.unloadCar(car);
-             car.setXpos(this.getXpos()-1);
+             Vehicle unloadedCar = storage.unload();
+             unloadedCar.setXpos(this.getXpos()-1);
              return unloadedCar;
         } else {
             throw new IllegalStateException("No cars to unload or the ramp is not down.");
@@ -42,7 +42,7 @@ public class CarTransport extends Truck {
     }
 
     protected int getnrCarsOnRamp(){
-        return storage.getNrCars();
+        return storage.getsize();
     }
 
 
