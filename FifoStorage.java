@@ -1,21 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
-
 //går merge?
-public class FifoStorage<T extends Vehicle> extends VehicleStorage { //ej stack add remocce
-    private ArrayList<Vehicle> loadedVehicles;
+public class FifoStorage<T> extends Storage<T> { //ej stack add remocce
 
     public FifoStorage(int maxCapacity) {
         super(maxCapacity);
     }
 
     @Override
-    public void loadCar(Vehicle car) {
-        loadedVehicles.addLast(car);
+    public T unloadimplementation(){
+        return loaded.removeFirst();
     }
 
-    @Override
-    public Vehicle unloadCar(Vehicle car){
-        return loadedVehicles.removeFirst();
-    }
 }

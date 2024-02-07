@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarWorkshop<T extends Vehicle> { // T - generic type parameter.
+public class CarWorkshop<T extends Vehicle> implements Loadable<T>{ // T - generic type parameter.
     // Indikerar på att det endast kan ta emot objekt av en viss typ.
     private final FifoStorage<T> storageInWorkshop;
-
 
     public CarWorkshop(int maxCapacity) {
         storageInWorkshop = new FifoStorage<>(maxCapacity);
     }
-
-    public void loadCar(T car) {
-            storageInWorkshop.loadCar(car);
+    @Override
+    public void load(T car) {
+        storageInWorkshop.load(car);
         }
-    public Vehicle unloadCar(Vehicle car) {
-            return storageInWorkshop.unloadCar(car);
+        @Override
+    public T unload() {
+            return storageInWorkshop.unload();
     }
 
 }

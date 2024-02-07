@@ -31,7 +31,7 @@ public class testCarTransport {
         car.setXpos(ct.getXpos());
         car.setYpos(ct.getYpos());
         ct.lowerRamp();
-        ct.loadCar(car);
+        ct.load(car);
         ct.raiseRamp();
         assertEquals(ct.getXpos(), car.getXpos(), 0);
         assertEquals(ct.getYpos(), car.getYpos(), 0);
@@ -40,9 +40,9 @@ public class testCarTransport {
     public void testloadedcars(){
         Vehicle volvo = new Volvo240();
         ct.lowerRamp();
-        ct.loadCar(volvo);
-        ct.loadCar(volvo);
-        ct.unloadCar(volvo);
+        ct.load(volvo);
+        ct.load(volvo);
+        ct.unload();
         assertEquals(1,ct.getnrCarsOnRamp(), 0);
     }
 
@@ -52,7 +52,7 @@ public class testCarTransport {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.lowerRamp();
         });
-        assertEquals("cannot lower ramp while moving.", e.getMessage());
+        assertEquals("cannot lower ramp while moving", e.getMessage());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class testCarTransport {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             ct.raiseRamp();
         });
-        assertEquals("cannot raise ramp while moving.", e.getMessage());
+        assertEquals("cannot raise ramp while moving", e.getMessage());
     }
 
 }
